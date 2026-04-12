@@ -1,0 +1,14 @@
+services:
+  oct-srf-classifier:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./models:/app/models
+      - ./src:/app/src
+
+    command: python src/main.py
