@@ -15,5 +15,9 @@ RUN apt-get update && apt-get install -y \
 
     
 COPY requirements.txt .
+COPY scripts/ ./scripts/
+
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+RUN chmod +x scripts/download_model.sh

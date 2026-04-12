@@ -11,4 +11,4 @@ services:
       - ./models:/app/models
       - ./src:/app/src
 
-    command: python src/main.py
+    command: bash -c "./scripts/download_model.sh && python src/main.py"
