@@ -30,16 +30,18 @@ The repository is organized by methodology. Both approaches utilize a shared inf
 * `inference/`: Scripts for model prediction. 
     * *Note: Requires the inference service to be active.*
 * `notebook/`: Step-by-step demo of the pipeline.
+* `ModelCard.md` : Explaination about the model.
 
 #### 2. [Temporal Sequence Analysis](/temporal-sequence-analysis/)
 *Implementation of the Multi-line Fovea Temporal Sequence approach.*
 * `data/`
 * `inference/`
 * `notebook/`
+* `ModelCard.md`
 
 #### 3. [Inference Service](/inference_service/)
 *Core environment and backend handling.*
-This folder manages the environment for the inference process for **both** approaches. Before running any scripts, please configure your environment following the [Inference Service README](/inference_service/README.md).
+This folder manages the environment for the inference process for **both** approaches. Before running any scripts, please configure your environment following the [Inference Service README](/inference_service/SETUP.md).
 
 ---
 
