@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: "If you use this software or the findings from our research, please cite both the journal article and the conference paper."
+authors:
+  - family-names: "Khakhai"
+    given-names: "Panita"
+  - family-names: "Paisarnsrisomsuk"
+    given-names: "Sarun"
+  - family-names: "Wiratchotisatian"
+    given-names: "Pitchaya"
+  - family-names: "Tangprasert"
+    given-names: "Kwankhao"
+  - family-names: "Laovirojjanakul"
+    given-names: "Wipada"
+title: "Retinal-Choroidal Disorders Classification and Diagnostic Framework"
+doi: "10.1097/IAE.0000000000004708"
+date-released: 2026-03-01
+
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Khakhai"
+      given-names: "Panita"
+    - family-names: "Paisarnsrisomsuk"
+      given-names: "Sarun"
+    - family-names: "Wiratchotisatian"
+      given-names: "Pitchaya"
+    - family-names: "Tangprasert"
+      given-names: "Kwankhao"
+    - family-names: "Laovirojjanakul"
+      given-names: "Wipada"
+  title: "Diagnostic Performance of Machine Learning Technology Using Optical Coherence Tomographic Image in Retinal Diseases Presented with Subretinal Fluid"
+  journal: "Retina"
+  volume: 46
+  issue: 3
+  start: 514
+  end: 520
+  year: 2026
+  month: 3
+  doi: "10.1097/IAE.0000000000004708"
+
+references:
+  - type: conference-paper
+    authors:
+      - family-names: "Tangprasert"
+        given-names: "Kwankhao"
+      - family-names: "Wiratchotisatian"
+        given-names: "Pitchaya"
+      - family-names: "Khakhai"
+        given-names: "Panita"
+      - family-names: "Laovirojjanakul"
+        given-names: "Wipada"
+      - family-names: "Paisarnsrisomsuk"
+        given-names: "Sarun"
+    title: "Enhanced Retinal-Choroidal Disorders Classification Model via Temporal Sequence Analysis of OCT Images Across Multiple Lines of Fovea"
+    collection-title: "2025 International Conference on Artificial Intelligence in Information and Communication (ICAIIC)"
+    year: 2025
+    start: 0766
+    end: 0771
+    doi: "10.1109/ICAIIC64266.2025.10920750"
