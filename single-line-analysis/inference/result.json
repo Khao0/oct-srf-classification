@@ -1,9 +1,9 @@
 {
-  "prediction": "CSC",
+  "prediction": "PCV",
   "scores": {
-    "CSC": 80.87,
-    "Normal": 1.48,
-    "PCV": 0.25,
-    "VKH": 17.41
+    "CSC": 19.27,
+    "Normal": 0.63,
+    "PCV": 49.18,
+    "VKH": 30.92
   }
 }
