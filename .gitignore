@@ -3,6 +3,8 @@ __pycache__/
 *.py[codz]
 *$py.class
 *.h5
+*.DS_Store
+temporal-sequence-analysis/data/filter_credential.ipynb
 
 # C extensions
 *.so
@@ -206,3 +208,4 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+single-line-analysis/.DS_Store
