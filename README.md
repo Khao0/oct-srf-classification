@@ -41,7 +41,7 @@ The repository is organized by methodology. Both approaches utilize a shared inf
 
 #### 3. [Inference Service](/inference_service/)
 *Core environment and backend handling.*
-This folder manages the environment for the inference process for **both** approaches. Before running any scripts, please configure your environment following the [Inference Service README](/inference_service/SETUP.md).
+This folder manages the environment for the inference process for **both** approaches. Before running any scripts, please configure your environment following the [Inference Service SETUP](/inference_service/SETUP.md).
 
 ---
 
