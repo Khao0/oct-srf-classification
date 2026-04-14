@@ -1,1 +1,0 @@
-chmod +x ./predict.sh && ./predict.sh
