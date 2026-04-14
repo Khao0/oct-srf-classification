@@ -13,11 +13,11 @@ temporal_seq_model = None
 def load_model():
     global single_line_model
     global temporal_seq_models
-    if os.path.exists("models/model.h5"):
-        pass
-    else :
+    if os.path.exists("models/single-line-model.h5"):
         single_line_model = tf.keras.models.load_model("models/single-line-model.h5")
         single_line_model.trainable = False
+    else :
+        raise FileNotFoundError("Model file not found: models/single-line-model.h5")
 
     # if os.path.exists("models/temporal_seq_model.h5"):
     #     pass
