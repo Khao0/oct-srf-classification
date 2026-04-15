@@ -1,11 +1,13 @@
 echo "Downloading single-line analysis model from Hugging Face..."
 
 python - <<EOF
-if not os.path.exists("models/"):
-    os.makedirs("models/")
 
 from huggingface_hub import hf_hub_download
 import os
+
+if not os.path.exists("models/"):
+    os.makedirs("models/")
+
 if os.path.exists("models/sla.h5"):
     print("Model already exists. Skipping download.")
 else:

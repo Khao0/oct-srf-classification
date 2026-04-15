@@ -1,0 +1,9 @@
+{
+  "prediction": "VKH",
+  "scores": {
+    "CSC": 0.14,
+    "Normal": 0.04,
+    "PCV": 0.39,
+    "VKH": 99.43
+  }
+}

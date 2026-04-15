@@ -6,24 +6,39 @@ import numpy as np
 import cv2
 
 CLASS_NAMES = ["CSC", "Normal", "PCV", "VKH"]
+SCAN_TYPES = {
+    "radial":12,
+    "raster":25
+}
 
-single_line_model = None
-temporal_seq_model = None
+sla_model = None
+tsa_fe_model = None
+tsa_lstm_model = None
+
 
 def load_model():
-    global single_line_model
-    global temporal_seq_models
-    if os.path.exists("models/single-line-model.h5"):
-        single_line_model = tf.keras.models.load_model("models/single-line-model.h5")
-        single_line_model.trainable = False
+    global sla_model
+    global tsa_fe_model
+    global tsa_lstm_model
+    if os.path.exists("models/sla.h5"):
+        sla_model = tf.keras.models.load_model("models/sla.h5")
+        sla_model.trainable = False
     else :
-        raise FileNotFoundError("Model file not found: models/single-line-model.h5")
+        raise FileNotFoundError("Model file not found: models/sla.h5")
+    
+    if os.path.exists("models/tsa_feature_extractor.h5"):
+        full_tsa_fe_model = tf.keras.models.load_model("models/tsa_feature_extractor.h5")
+        tsa_fe_model = tf.keras.models.Model(inputs=full_tsa_fe_model.input, outputs=full_tsa_fe_model.layers[-6].output)
+        tsa_fe_model.trainable = False
+    else :
+        raise FileNotFoundError("Model file not found: models/tsa_feature_extractor.h5")
+    
+    if os.path.exists("models/tsa_lstm.keras"):
+        tsa_lstm_model = tf.keras.models.load_model("models/tsa_lstm.keras")
+        tsa_lstm_model.trainable = False
+    else :
+        raise FileNotFoundError("Model file not found: models/tsa_lstm.keras")
 
-    # if os.path.exists("models/temporal_seq_model.h5"):
-    #     pass
-    # else :
-    #     temporal_seq_model = tf.keras.models.load_model("models/temporal_seq_model.h5")
-    #     temporal_seq_model.trainable = False
 
 
 app = Flask(__name__)
@@ -59,7 +74,7 @@ def single_line_predict():
         tomogram_feature = np.expand_dims(tomogram_img, axis=0)
 
         # Model prediction (2 inputs)
-        output = single_line_model.predict([retinal_feature, tomogram_feature])
+        output = sla_model.predict([retinal_feature, tomogram_feature])
 
         scores = output[0].tolist()
         pred_class = CLASS_NAMES[np.argmax(scores)]
@@ -74,6 +89,42 @@ def single_line_predict():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route("/temporal-sequence-predict", methods=["POST"])
+def temporal_sequence_predict():
+    radial_sequence = []
+    raster_sequence = []
+    for st, num_images in SCAN_TYPES.items():
+        for i in range(1, num_images + 1):
+            file = request.files.get(f"{st}_{i}")
+            if file is None:
+                return jsonify({"error": f"Missing image: {st}_{i}"}), 400
+            img = read_image(file)
+            if img is None or img.shape != (600, 600, 3):
+                return jsonify({"error": f"Invalid image input: {st}_{i}"}), 400
+            if st == "radial":
+                radial_sequence.append(img)
+            else:
+                raster_sequence.append(img)
+
+    radial_features = tsa_fe_model.predict(np.array(radial_sequence))
+    raster_features = tsa_fe_model.predict(np.array(raster_sequence))
+    radial_features = np.expand_dims(radial_features, axis=0)
+    raster_features = np.expand_dims(raster_features, axis=0)
+    output = tsa_lstm_model.predict([radial_features, raster_features])
+
+    scores = output[0].tolist()
+    pred_class = CLASS_NAMES[np.argmax(scores)]
+
+    # Convert to percentage (2 decimal places)
+    scores_percent = [round(s * 100, 2) for s in scores]
+
+
+    return jsonify({
+            "prediction": pred_class,
+            "scores": dict(zip(CLASS_NAMES, scores_percent))
+    })
+
 
 if __name__ == "__main__":
     load_model()
