@@ -118,6 +118,6 @@ If you use this model or code in your research, please cite the original paper:
 
 For questions about this model, please open an issue on this repository or contact the corresponding author listed in the publication.
 - *Khon Kaen University — Department of Computer Engineering, Thailand*
-- *Khon Kaen University - Department of Statistic, Thailand*
+- *Khon Kaen University — Department of Statistic, Thailand*
 - *Khon Kaen University — Faculty of Medicine, Department of Ophthalmology, Srinagarind Hospital, Thailand*
 
