@@ -20,4 +20,5 @@ COPY scripts/ ./scripts/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-RUN chmod +x scripts/download_model.sh
+RUN chmod +x scripts/download_sla_model.sh
+RUN chmod +x scripts/download_tsa_models.sh

@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 *.h5
 *.DS_Store
+*.keras
 temporal-sequence-analysis/data/filter_credential.ipynb
 
 # C extensions

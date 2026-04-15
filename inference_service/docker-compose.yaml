@@ -11,4 +11,7 @@ services:
       - ./models:/app/models
       - ./src:/app/src
 
-    command: bash -c "./scripts/download_model.sh && python src/main.py"
+    command: 
+      bash -c "./scripts/download_sla_model.sh 
+            && ./scripts/download_tsa_models.sh 
+            && python src/main.py"
