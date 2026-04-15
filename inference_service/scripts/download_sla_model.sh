@@ -6,12 +6,12 @@ if not os.path.exists("models/"):
 
 from huggingface_hub import hf_hub_download
 import os
-if os.path.exists("models/single-line-model.h5"):
+if os.path.exists("models/sla.h5"):
     print("Model already exists. Skipping download.")
 else:
     hf_hub_download(
         repo_id="Kwankhao/oct-srf-classification",
-        filename="single-line-model.h5",
+        filename="sla.h5",
         local_dir="models"
     )
 EOF

@@ -7,21 +7,21 @@ import os
 if not os.path.exists("models/"):
     os.makedirs("models/")
 
-if os.path.exists("models/tsa-feature_extractor.h5"):
-    print("Model tsa-feature_extractor already exists. Skipping download.")
+if os.path.exists("models/tsa_feature_extractor.h5"):
+    print("Model tsa_feature_extractor already exists. Skipping download.")
 else:
     hf_hub_download(
         repo_id="Kwankhao/oct-srf-classification",
-        filename="tsa-feature_extractor.h5",
+        filename="tsa_feature_extractor.h5",
         local_dir="models"
 )
 
-if os.path.exists("models/tsa-lstm.keras"):
-    print("Model tsa-lstm already exists. Skipping download.")
+if os.path.exists("models/tsa_lstm.keras"):
+    print("Model tsa_lstm already exists. Skipping download.")
 else:
     hf_hub_download(
         repo_id="Kwankhao/oct-srf-classification",
-        filename="tsa-lstm.keras",
+        filename="tsa_lstm.keras",
         local_dir="models"
 )
 
